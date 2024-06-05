@@ -28,12 +28,29 @@ export const App = () => {
 
   const [buttonList, setbuttonList] = useState(buttonArray);
 
+  const [buttonValue, setbuttonValue] = useState("");
+
+  const getvalue = (value) => {
+    switch (value) {
+      case "=":
+        setbuttonValue(eval(buttonValue));
+
+        break;
+
+      case "AC":
+        setbuttonValue("");
+        break;
+      default:
+        setbuttonValue(buttonValue + value);
+        break;
+    }
+  };
   return (
     <div className="wrapper">
       <h2 className="text-center">REACT CALCULATOR</h2>
-      <div className="calculator">
-        <Display></Display>
-        <Button buttonList={buttonList}></Button>
+      <div className="calculator rounded">
+        <Display buttonValue={buttonValue}></Display>
+        <Button getvalue={getvalue} buttonList={buttonList}></Button>
       </div>
       {/* display */}
 

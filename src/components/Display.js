@@ -1,8 +1,5 @@
 import React from "react";
 
-export const Display = () => {
-  return <div className="display">
-
-
-  </div>;
+export const Display = ({ buttonValue }) => {
+  return <div className="display">{buttonValue}</div>;
 };

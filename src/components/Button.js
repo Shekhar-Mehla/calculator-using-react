@@ -1,8 +1,9 @@
 import "../App.css";
 
-export const Button = ({ buttonList }) => {
+export const Button = ({ buttonList, getvalue }) => {
   const onClickHandler = (e) => {
-    console.log(e.target.innerText);
+    const button = e.target.innerText;
+    getvalue(button);
   };
   const list = buttonList.map((button, i) => (
     <button
