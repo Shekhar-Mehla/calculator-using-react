@@ -25,16 +25,24 @@ export const App = () => {
     ".",
     "=",
   ];
+  const operator = ["+", "-", "*", "/", "%"];
 
   const [buttonList, setbuttonList] = useState(buttonArray);
-
+  // store the button value on click
   const [buttonValue, setbuttonValue] = useState("");
-
+  // uplifted the state from the button component by calling the fucniton in button component
   const getvalue = (value) => {
     switch (value) {
       case "=":
-        setbuttonValue(eval(buttonValue));
+        setbuttonValue(`${eval(buttonValue)}`);
 
+        break;
+      case "C":
+        setbuttonValue(buttonValue.substring(0, buttonValue.length - 1));
+
+        break;
+      case ".":
+        console.log(operator.includes(value));
         break;
 
       case "AC":
