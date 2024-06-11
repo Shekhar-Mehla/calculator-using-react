@@ -63,12 +63,18 @@ export const App = () => {
 
       default:
         // handle last operator here
-        let lastOP = "";
+
         if (operator.includes(value)) {
-          lastOP = value;
-          setbuttonValue(
-            buttonValue.substring(0, buttonValue.length - 1) + lastOP
+          setbuttonValue(buttonValue + value);
+
+          const lastcharc = buttonValue.slice(
+            buttonValue.length - 1,
+            buttonValue.length
           );
+
+          if (operator.includes(lastcharc)) {
+            setbuttonValue(buttonValue.replace(lastcharc, value));
+          }
         } else {
           setbuttonValue(buttonValue + value);
         }
@@ -82,7 +88,6 @@ export const App = () => {
         <Display buttonValue={buttonValue}></Display>
         <Button getvalue={getvalue} buttonList={buttonList}></Button>
       </div>
-     
     </div>
   );
 };
