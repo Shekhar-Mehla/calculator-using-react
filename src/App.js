@@ -58,7 +58,7 @@ export const App = () => {
         break;
 
       case "AC":
-        setbuttonValue("");
+        setbuttonValue("0.00");
         break;
 
       default:
