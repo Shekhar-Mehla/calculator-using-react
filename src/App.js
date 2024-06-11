@@ -42,12 +42,25 @@ export const App = () => {
 
         break;
       case ".":
-        console.log(operator.includes(value));
+        if (buttonValue.includes(".")) {
+          const lastDotIndex = buttonValue.lastIndexOf(".");
+          const operraotrchecking = buttonValue.slice(lastDotIndex);
+
+          if (operraotrchecking.includes("+" || "-" || "*" || "/")) {
+            setbuttonValue(buttonValue + value);
+          }
+        } else {
+          setbuttonValue(buttonValue + value);
+        }
+
         break;
 
       case "AC":
         setbuttonValue("");
         break;
+
+    
+
       default:
         setbuttonValue(buttonValue + value);
         break;
