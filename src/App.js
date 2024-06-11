@@ -37,10 +37,12 @@ export const App = () => {
         setbuttonValue(`${eval(buttonValue)}`);
 
         break;
+
       case "C":
         setbuttonValue(buttonValue.substring(0, buttonValue.length - 1));
 
         break;
+
       case ".":
         if (buttonValue.includes(".")) {
           const lastDotIndex = buttonValue.lastIndexOf(".");
@@ -59,10 +61,17 @@ export const App = () => {
         setbuttonValue("");
         break;
 
-    
-
       default:
-        setbuttonValue(buttonValue + value);
+        // handle last operator here
+        let lastOP = "";
+        if (operator.includes(value)) {
+          lastOP = value;
+          setbuttonValue(
+            buttonValue.substring(0, buttonValue.length - 1) + lastOP
+          );
+        } else {
+          setbuttonValue(buttonValue + value);
+        }
         break;
     }
   };
@@ -73,9 +82,7 @@ export const App = () => {
         <Display buttonValue={buttonValue}></Display>
         <Button getvalue={getvalue} buttonList={buttonList}></Button>
       </div>
-      {/* display */}
-
-      {/* button */}
+     
     </div>
   );
 };
